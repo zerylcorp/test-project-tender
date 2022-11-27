@@ -84,3 +84,13 @@ async function deleteRecords (id){
   })
   return result;
 }
+
+module.exports = {
+  getAllByRange,
+  getAllByCommodity,
+  getByArea,
+  getById,
+  addRecords,
+  updateRecords,
+  deleteRecords
+}
