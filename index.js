@@ -25,8 +25,62 @@ async function getAllByRange(harga = null, size = null, tanggal = null){
   const data = await store.read("list", {
     search: searchObj
   });
-  console.log({ data });
   return data;
 }
 
-getAllByRange(90000,null, '2022-05-02T08:02:28Z')
+async function getAllByCommodity(commodity){
+  const data = await store.read("list", {
+    search: {
+      komoditas: commodity.toUpperCase()
+    }
+  });
+  return data;
+}
+
+async function getByArea(province, kota = null){
+  const searchObj = {};
+  searchObj.area_provinsi = province.toUpperCase()
+
+  if(kota !== null){
+    searchObj.area_kota = kota
+  }
+
+  const data = await store.read("list", {
+    search: searchObj
+  });
+  return data;
+}
+
+async function getById(id){
+  const data = await store.read("list", {
+    search: {
+      uuid: id
+    }
+  });
+
+  if(data && data.length > 0){
+    return data[0]
+  }
+  return null
+
+}
+
+async function addRecords(listData){
+  const result = await store.append('list', listData)
+  return result;
+}
+
+async function updateRecords(id, newValues){
+  const result = await store.edit('list', {
+    search: { uuid: id },
+    set: newValues
+  })
+  return result
+}
+
+async function deleteRecords (id){
+  const result = await store.delete('list', {
+    search: { uuid: id }
+  })
+  return result;
+}
