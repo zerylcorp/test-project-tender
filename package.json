@@ -1,0 +1,17 @@
+{
+  "name": "zerylcorp-test-project",
+  "version": "1.0.0",
+  "description": "This is Test project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zerylcorp-test-project"
+  ],
+  "author": "zerylcorp",
+  "license": "ISC",
+  "dependencies": {
+    "stein-js-client": "^0.0.2"
+  }
+}
